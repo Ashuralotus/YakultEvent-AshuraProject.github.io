@@ -2,12 +2,12 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #fff7f2;
+    background: hwb(0 100% 0%);
   }
   
   /* Header */
   header {
-    background-color: #e74c3c;
+    background-color: #f2250e;
     color: white;
     padding: 15px;
     text-align: center;
@@ -305,4 +305,82 @@ body {
 
 .btnLogout:hover {
   background: #a93226;
+}
+
+/* Background khusus halaman login */
+body.loginpage {
+  background: url("pabrikyakult.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Supaya form login tetap jelas */
+.loginBox {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Yakult Man animasi di Add Event */
+#addEvent {
+  position: relative; /* agar animasi bisa di layer bawah */
+  overflow: hidden;
+}
+
+.yakultMan {
+  position: absolute;
+  bottom: -20px;
+  left: -100px; /* mulai dari kiri luar layar */
+  width: 100px;
+  height: 100px;
+  background: url('yakultman.jpeg') no-repeat center center;
+  background-size: contain;
+  animation: moveYakult 15s linear infinite;
+}
+
+/* Animasi bergerak dari kiri ke kanan */
+@keyframes moveYakult {
+  0% { left: -100px; }
+  100% { left: 100%; }
+}
+
+/* Pastikan konten Add Event tetap di atas */
+#addEvent .container, #addEvent header {
+  position: relative;
+  z-index: 1;
+}
+
+.yakultManSales {
+  position: absolute;
+  bottom: -200px;
+  left: 150px;              /* mulai dari luar layar kiri */
+  width: 300px;              /* ukuran bisa disesuaikan */
+  height: 600px;
+  background: url('yakultmanyt.png') no-repeat center center;
+  background-size: contain;             /* biar di bawah konten */
+}
+
+.yakultManThink {
+  position: absolute;
+  bottom: -150px;
+  right: 150px;              /* mulai dari luar layar kiri */
+  width: 300px;              /* ukuran bisa disesuaikan */
+  height: 600px;
+  background: url('yakultthink.png') no-repeat center center;
+  background-size: contain;             /* biar di bawah konten */
+}
+
+.minoru {
+  position: absolute;
+  bottom: 150px;
+  right: 250px;              /* mulai dari luar layar kiri */
+  width: 200px;              /* ukuran bisa disesuaikan */
+  height: 300px;
+  background: url('minoru.png') no-repeat center center;
+  background-size: contain;             /* biar di bawah konten */
 }
