@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Event Yakult</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkLogin()">
+
+  <p id="welcomeUser" class="welcomeUser"></p>
+
+  <!-- Splash Screen -->
+  <div id="splash">
+    <h1>SELAMAT DATANG</h1>
+    <h1>DI PORTAL EVENT</h1>
+    <h1>PT. YAKULT INDONESIA PERSADA</h1>
+  </div>
+
+  <!-- Halaman Add Event -->
+  <div id="addEvent" style="display:none;">
+    <header>ADD EVENT
+      <button class="btnLogout" onclick="logout()">Logout</button>
+    </header>
+    <div class="container">
+      <label for="eventType">Pilih Event:</label>
+      <select id="eventType" onchange="showEventForm()">
+        <option value="">-- Pilih --</option>
+        <option value="film">Film Showing</option>
+        <option value="other">Another Event</option>
+      </select>
+
+      <!-- Form Film Showing -->
+      <div id="filmForm" class="formHidden">
+        <input type="text" id="schoolName" placeholder="Nama Sekolah / Kantor">
+        <input type="number" id="jumlahPeserta" placeholder="Jumlah Murid / Karyawan">
+        <input type="number" id="sample" placeholder="Input Sample Yakult">
+        <button class="btn" onclick="submitFilm()">Submit</button>
+      </div>
+
+      <!-- Form Another Event -->
+      <div id="otherForm" class="formHidden">
+        <input type="text" id="namaEvent" placeholder="Nama Event">
+        <input type="text" id="lokasiEvent" placeholder="Lokasi Event">
+        <h4>Saldo Awal</h4>
+        <input class="input_yo" type="number" id="saldoYO" placeholder="YO Jumlah Botol">
+        <input class="input_ym" type="number" id="saldoOM" placeholder="OM Jumlah Botol">
+        <input class="input_yt" type="number" id="saldoYT" placeholder="YT Jumlah Botol">
+        <button class="btn" onclick="submitEvent()">Submit</button>
+      </div>
+
+      <!-- Daftar Event -->
+      <div class="eventListContainer">
+        <h4>Daftar Event:</h4>
+        <div id="eventList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Halaman Penjualan -->
+  <div id="main" style="display:none;">
+    <header>Penjualan
+      <button class="btnLogout" onclick="logout()">Logout</button>
+    </header>
+  <div class="container">
+
+      <!-- Saldo Awal Event -->
+      <div id="saldoAwalBox" class="saldoAwalBox">
+       <!-- Saldo Awal Event (BARU: tiga kolom sejajar) -->
+<div id="saldoAwalBox" class="saldoAwalBox">
+  <div class="saldo-row">
+    <div class="saldo-item">
+      <div class="saldo-label">YO</div>
+      <div class="saldo-value" id="saldoAwalYO">0</div>
+      <div class="saldo-desc">Yakult Ori</div>
+    </div>
+
+    <div class="saldo-item">
+      <div class="saldo-label">YM</div>
+      <div class="saldo-value" id="saldoAwalOM">0</div>
+      <div class="saldo-desc">Yakult Mangga</div>
+    </div>
+
+    <div class="saldo-item">
+      <div class="saldo-label">YT</div>
+      <div class="saldo-value" id="saldoAwalYT">0</div>
+      <div class="saldo-desc">Yakult Light</div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    <div class="form-row">
+      <span class="label-info ori">Yakult Ori</span>
+      <input type="number" id="yo" placeholder="Jumlah YO">
+    </div>
+    <div class="form-row">
+      <span class="label-info mangga">Yakult Mangga</span>
+      <input type="number" id="om" placeholder="Jumlah OM">
+    </div>
+    <div class="form-row">
+      <span class="label-info light">Yakult Light</span>
+      <input type="number" id="yt" placeholder="Jumlah YT">
+    </div>
+      <button class="btn" onclick="hitung()">Hitung Penjualan</button>
+      <div class="result" id="hasil"></div>
+
+      <!-- Rekap Transaksi -->
+      <div class="rekapBox">
+        <h3>Rekap Penjualan Hari Ini</h3>
+        <table id="rekapTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>YO</th>
+              <th>OM</th>
+              <th>YT</th>
+              <th>Total (Rp)</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button class="btnReset" onclick="resetRekap()">Reset Rekap</button>
+        <button class="btn" onclick="showTotalPage()">📊 Total Penjualan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Halaman Total Penjualan -->
+<div id="totalPage" class="page" style="display:none;">
+  <header>Total Penjualan Event Yakult
+    <button class="btnLogout" onclick="logout()">Logout</button>
+  </header>
+  <div class="container">
+    <h2 id="eventNameTotal"></h2>
+
+    <div class="rekapBox">
+      <h3>Rincian Penjualan</h3>
+      <table id="totalTable">
+        <thead>
+          <tr>
+            <th>Produk</th>
+            <th>Jumlah Terjual</th>
+            <th>Total Uang</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+     <!-- Tombol kembali ke halaman penjualan -->
+     <button class="btn" onclick="showPage('main')">⬅ Kembali</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
